@@ -1,4 +1,4 @@
-import ytdl, { videoFormat, videoInfo } from ""@distube/ytdl-core"";
+import ytdl, { videoFormat, videoInfo } from "@distube/ytdl-core";
 import ytdlInfoResponse from "./offline";
 import { complexVideoFormat, revisedFormat, selectedPropOnly } from "./type";
 
