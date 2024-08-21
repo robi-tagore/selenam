@@ -3,6 +3,7 @@
 
 import { GradientText, Text } from "@/app/components.g";
 import { HomePageLoader, WelcomeLoader } from "@/app/loader";
+import { MaterialSymbol } from "material-symbols";
 import { useRouter } from "next/navigation";
 import { createRef } from "react";
 
@@ -64,30 +65,33 @@ export default function SearchPage({}) {
           </div>
         </div>
 
-        <div className="webinput">
-          <input
-            style={{ fontSize: h2 }}
-            type="text"
-            placeholder="youtube.com/apolloselena"
-            onKeyDown={keyDownAct}
-            ref={userInput}
-          />
-          <button
-            onClick={handleKeypress}
-            type="button"
-            className="cxy"
-            ref={submitBut}
-          >
-            <GradientText
-              style={{ fontSize: "1.75rem" }}
-              animated={true}
-              deg="45"
-              speed="500ms"
-            >
-              ⤊
-            </GradientText>
-          </button>
-        </div>
+        <div className="webinputWrapper">
+              <div className="webinput">
+                <input
+                  type="text"
+                  placeholder=""
+                  ref={userInput}
+                  onKeyDown={keyDownAct}
+                />
+                <button
+                  ref={submitBut}
+                  onClick={handleKeypress}
+                  type="button"
+                  className="cxy"
+                >
+                  <GradientText
+                    style={{ fontSize: "1.5rem" }}
+                    animated={true}
+                    deg="45"
+                    speed="500ms"
+                  >
+                    <span className="material-symbols-rounded">
+                      {"rocket_launch" as MaterialSymbol}
+                    </span>
+                  </GradientText>
+                </button>
+              </div>
+      </div>
       </div>
       <HomePageLoader></HomePageLoader>
     </div>

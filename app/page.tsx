@@ -56,7 +56,7 @@ export default function Home() {
     );
 
     setTimeout(() => {
-      router.push('/desktop/search')
+      router.push('/desktop')
     }, 1000);
   }
 
