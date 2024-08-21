@@ -1,7 +1,5 @@
 "use client";
 
-import './apollo/core/format/index'
-
 import { useState } from "react";
 import { GradientText, Logo, Text } from "./components.g";
 import { useRouter } from "next/navigation";
