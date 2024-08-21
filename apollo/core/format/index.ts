@@ -5,10 +5,11 @@ import { serverErr } from "../../globalTypes";
 import { apollo } from "../common";
 import { resolvedFormats } from "./type";
 import ytdlInfoResponse from "./offline";
+import { ytdlOptions } from "@/apollo/deps";
 
 async function loadFormats(url: string): Promise<resolvedFormats> {
   apollo(`action  => loading formats @url : ${url}`);
-  return await ytdl.getInfo(url).then(
+  return await ytdl.getInfo(url,ytdlOptions).then(
     (videoInfo) => {
       apollo(`success => loading formats @url : ${url}`); // debug
       var title = videoInfo.videoDetails.title;
