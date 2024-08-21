@@ -25,7 +25,6 @@ export async function POST(
         }
       });
 
-      
       APOLLO_OUT(`resolved request as success @/download`);
 
       return new Response(webStream, {
@@ -41,7 +40,7 @@ export async function POST(
       APOLLO_OUT(`resolved request as failure @/download`);
       console.log(err);
 
-      return Response.json(err)
+      return Response.json(err,{status:500})
       // response.status(513).json(err);
     }
   );

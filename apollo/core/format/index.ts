@@ -1,4 +1,5 @@
-import ytdl from "ytdl-core";
+// import ytdl from "ytdl-core";
+import ytdl from "@distube/ytdl-core";
 import { prettify } from "./deps";
 
 import { serverErr } from "../../globalTypes";

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 1234",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,11 +12,11 @@
   "dependencies": {
     "@distube/ytdl-core": "^4.14.4",
     "ffmpeg-static": "^5.2.0",
+    "material-symbols": "^0.20.0",
     "next": "^14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "ytdl-core": "^4.11.5",
-    "material-symbols": "^0.20.0"
+    "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
     "@types/ffmpeg-static": "^3.0.3",

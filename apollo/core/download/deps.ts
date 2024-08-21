@@ -5,8 +5,9 @@ import { apollo } from "../common";
 
 import { serverErr, serverMsg } from "../../globalTypes";
 // import ytdl from "ytdl-core";
-import { Readable, Writable } from "stream";
 import ytdl from "@distube/ytdl-core";
+
+import { Readable, Writable } from "stream";
 import { ytdlOptions } from "@/apollo/deps";
 
 process.env.YTDL_NO_UPDATE = "true";

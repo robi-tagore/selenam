@@ -26,6 +26,7 @@ import { off } from "./offline";
 import { colN, widthToK } from "@/app/utils";
 import { useRouter } from "next/navigation";
 import env from "../../../../ENVs";
+import { MaterialSymbol } from "material-symbols";
 
 var h1 = "2.25rem";
 var h2 = "1.75rem";
@@ -338,110 +339,54 @@ export default function URLresult({ params }: any) {
         }, 1000);
       })
       .catch((err) => {
-        if (err == "CONNECTION_ERR") {
-          initialLoaderTo(
-            <div style={{ height: "100%", width: "100%" }} className="cyx">
+        initialLoaderTo(
+          <div style={{ height: "100%", width: "100%" }} className="cyx">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "start",
+                alignItems: "center",
+              }}
+            >
+              {" "}
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "start",
-                  alignItems: "center",
-                }}
+                className="webdownload"
+                onClick={() => router.push("/desktop")}
               >
-                <Text size={h2}>
-                  It seems Selenana could'nt connect Apollo due to Network
-                  Issue, Retrying in 13s &nbsp;
-                </Text>
+                <button>
+                  <GradientText style={{ cursor: "pointer" }} animated={true}>
+                    <span className="material-symbols-rounded">
+                      {"home" as MaterialSymbol}
+                    </span>
+                  </GradientText>{" "}
+                </button>
               </div>
-            </div>
-          );
-          setTimeout(() => {
-            window.location.reload();
-          }, 20000);
-        } else {
-          initialLoaderTo(
-            <div style={{ height: "100%", width: "100%" }} className="cyx">
+              &nbsp;&nbsp;&nbsp;
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "start",
-                  alignItems: "center",
-                }}
+                className="webdownload"
+                onClick={() => window.location.reload()}
               >
-                {" "}
-                <div
-                  className="webdownload"
-                  onClick={() => router.push("/desktop")}
-                >
-                  <button>
-                    <GradientText
-                      style={{ cursor: "pointer" }}
-                      size="1.75rem"
-                      animated={true}
-                    >
-                      🏠
-                    </GradientText>{" "}
-                  </button>
-                </div>
-                &nbsp;&nbsp;&nbsp;
-                <div
-                  className="webdownload"
-                  onClick={() => window.location.reload()}
-                >
-                  <button>
-                    <GradientText
-                      style={{ cursor: "pointer" }}
-                      size="2rem"
-                      animated={true}
-                    >
-                      ⟳
-                    </GradientText>{" "}
-                  </button>
-                </div>
-                &nbsp;&nbsp;&nbsp;
-                <Text size={p} style={{ lineHeight: "1.5" }}>
-                  An Error has occured{" "}
-                  <span>
-                    {(() => {
-                      if (
-                        err.data != undefined &&
-                        err.data.error != undefined &&
-                        err.data.error.errno == -3001
-                      ) {
-                        return (
-                          <div>
-                            <GradientText size={h2} animated={true}>
-                              Server has fallen to a network issue
-                            </GradientText>
-                          </div>
-                        );
-                      } else if (err.data != undefined) {
-                        return (
-                          <div>
-                            <GradientText size={p} animated={true}>
-                              Invalid url provided
-                            </GradientText>
-                          </div>
-                        );
-                      } else {
-                        console.log("keep in note for new errors", err);
-                        return (
-                          <div>
-                            <GradientText size={h2} animated={true}>
-                              Unable to connect with Apollo (CC).
-                            </GradientText>
-                          </div>
-                        );
-                      }
-                    })()}
-                  </span>
-                </Text>
+                <button>
+                  <GradientText style={{ cursor: "pointer" }} animated={true}>
+                    <span className="material-symbols-rounded">
+                      {"refresh" as MaterialSymbol}
+                    </span>
+                  </GradientText>{" "}
+                </button>
               </div>
+              &nbsp;&nbsp;&nbsp;
+              <Text size={p} style={{ lineHeight: "1.5" }}>
+                An Error has occured{" "}
+                <div>
+                  <GradientText animated={true}>
+                    <h5>{err.data ? JSON.stringify(err.data) : String((err as Error).message)}</h5>
+                  </GradientText>
+                </div>
+              </Text>
             </div>
-          );
-        }
+          </div>
+        );
       });
   }
 
