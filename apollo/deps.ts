@@ -1,5 +1,6 @@
 
 import ytdl from '@distube/ytdl-core';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 
 function APOLLO_OUT(arg: any): void {
@@ -7,7 +8,6 @@ function APOLLO_OUT(arg: any): void {
     console.log(`APOLLO =:> ${arg}`);
   }
 }
-const HttpsProxyAgent = require('https-proxy-agent');
 
 const proxyUrl = 'https://45.119.133.6:3128'; // Example: 'http://103.175.112.35:8080'
 

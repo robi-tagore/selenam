@@ -22,7 +22,7 @@ async function pipeStandalone(
   return new Promise(async (solved, mystery) => {
     var videoStream = ytdl(url, {
       quality: itag,
-      agent:agent
+      agent:<any>agent
     });
 
     videoStream

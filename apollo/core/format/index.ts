@@ -10,7 +10,7 @@ import { agent } from "@/apollo/deps";
 
 async function loadFormats(url: string): Promise<resolvedFormats> {
   apollo(`action  => loading formats @url : ${url}`);
-  return await ytdl.getInfo(url, { agent: agent }).then(
+  return await ytdl.getInfo(url, { agent: <any>agent }).then(
     (videoInfo) => {
       apollo(`success => loading formats @url : ${url}`); // debug
       var title = videoInfo.videoDetails.title;
