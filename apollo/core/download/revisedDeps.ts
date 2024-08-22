@@ -6,6 +6,7 @@ import { serverErr } from "../../globalTypes";
 // import ytdl from "ytdl-core";
 import ytdl from "@distube/ytdl-core";
 import readline from "readline";
+import { agent } from "@/apollo/deps";
 
 process.env.YTDL_NO_UPDATE = "true";
 // env dependence : DOWNLOAD_DEBUG = NIGHT ; OFFLINE = NIGHT
@@ -21,6 +22,7 @@ async function pipeStandalone(
   return new Promise(async (solved, mystery) => {
     var videoStream = ytdl(url, {
       quality: itag,
+      agent:agent
     });
 
     videoStream
