@@ -5,6 +5,7 @@ import { loadFormats } from "./format/index";
 import { revisedFormat, selectedPropOnly } from "./format/type";
 import { mergeFiles } from "./merge/index";
 import { readFile } from 'fs'
+import { pipeStandalone, pipeUntillSuccess } from "./download/revisedDeps";
 
 
 async function getDistributeAble(url: string, format : revisedFormat) {
@@ -28,8 +29,8 @@ async function getDistributeAble(url: string, format : revisedFormat) {
             var fileDest2 : string = path.resolve('storage',`${unId}${itag2}.${format.ext}`);
             var finalDest : string = path.resolve('storage',`${unId}.${format.ext}`);
   
-            await downloadAndSave(url,itag1,fileDest1)
-            await downloadAndSave(url,itag2,fileDest2)
+            await pipeUntillSuccess(url,itag1,fileDest1,5)
+            await pipeUntillSuccess(url,itag2,fileDest2,5)
             await mergeFiles(fileDest1,fileDest2,finalDest)
             
             apollo(`internal server request => get distributable @url : ${url} \n ==> success`)

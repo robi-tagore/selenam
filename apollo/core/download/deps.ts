@@ -8,7 +8,7 @@ import { serverErr, serverMsg } from "../../globalTypes";
 import ytdl from "@distube/ytdl-core";
 
 import { Readable, Writable } from "stream";
-import { ytdlOptions } from "@/apollo/deps";
+import { agent } from "@/apollo/deps";
 
 process.env.YTDL_NO_UPDATE = "true";
 // env dependence : DOWNLOAD_DEBUG = NIGHT ; OFFLINE = NIGHT
@@ -62,7 +62,17 @@ function downloadStream(url: string, itag: number): Promise<Buffer> {
   return new Promise((solved, mystery) => {
     var stream = ytdl(url, {
       quality: itag,
-      ...ytdlOptions,
+      requestOptions:{
+        headers: {
+          // 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+          // 'Accept-Language': 'en-US,en;q=0.9',
+          // 'Accept': 'application/json, text/plain, */*',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          'Connection': 'keep-alive',
+          // 'Referer': 'https://www.youtube.com',
+        },
+        highWaterMark: 1 << 25
+      }      
     });
     var chunks: Array<Buffer> | any = [];
 
